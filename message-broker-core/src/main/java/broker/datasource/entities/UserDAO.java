@@ -29,7 +29,6 @@ public class UserDAO {
 
     public UserDAO() {};
 
-
     public String getUsername() {
         return username;
     }
