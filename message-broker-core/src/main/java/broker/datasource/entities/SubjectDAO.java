@@ -24,6 +24,11 @@ public class SubjectDAO {
     @OneToMany(mappedBy="subject", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     Set<MessageDAO> messages = new HashSet();
 
+    public SubjectDAO() {
+    }
+
+    ;
+
     public SubjectDAO(String subjectType) {
         this.subject_type = subjectType;
     }
