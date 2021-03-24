@@ -23,4 +23,4 @@ Messages have their expiration date and are deleted from database after expiring
 Application has it's hardcoded testmessage thread that creates new message on fixed time period.
 
 
-SQL added to project is database export that can be used to run application in local envinroment
+SQL added to project is a database export that can be used to run application in local envinroment
