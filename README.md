@@ -10,7 +10,7 @@ Stack:
 * JSONWebToken
 
 Modules:
-###*message-broker-core
+### *message-broker-core
 Module containing REST Api, database connection and web socket logic
 
 Application is using web socket to deliver messages to the user, using addres passed by them during registering
