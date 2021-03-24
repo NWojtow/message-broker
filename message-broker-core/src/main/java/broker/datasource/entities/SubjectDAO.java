@@ -40,4 +40,8 @@ public class SubjectDAO {
     public Set<UserDAO> getUsers() {
         return users;
     }
+
+    public int getSubject_id() {
+        return subject_id;
+    }
 }
