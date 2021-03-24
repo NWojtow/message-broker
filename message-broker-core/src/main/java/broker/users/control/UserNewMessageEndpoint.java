@@ -18,11 +18,9 @@ public class UserNewMessageEndpoint implements Runnable {
     }
     @Override
     public void run() {
-        String[] ip = address.split(":");
 
-        if (ip.length == 2) {
             try {
-                Socket socket = new Socket(ip[0], Integer.valueOf(ip[1]));
+                Socket socket = new Socket(address, 1567);
                 OutputStream outputStream = socket.getOutputStream();
                 PrintWriter printWriter = new PrintWriter(outputStream, true);
                 printWriter.println(message);
@@ -34,5 +32,4 @@ public class UserNewMessageEndpoint implements Runnable {
                 e.printStackTrace();
             }
         }
-    }
 }
