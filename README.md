@@ -13,6 +13,12 @@ Modules:
 ### *message-broker-core
 Module containing REST Api, database connection and web socket logic
 
+### *message-broker-client
+Module contains client that runs on Spring and when started it creates socket that listens for new messages and also socket to get all old messages from server
+
+### *message-broker-client
+Module contains constants etc.
+
 Application is using web socket to deliver messages to the user, using addres passed by them during registering
 JWTToken is used to verify user creditentials
 Based on JWTToken spring framework checks user priviliges to access some of Admin only endpoints
