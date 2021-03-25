@@ -1,5 +1,7 @@
 package broker.users.control;
 
+import constants.MessageBrokerConstants;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -20,7 +22,7 @@ public class UserNewMessageEndpoint implements Runnable {
     public void run() {
 
             try {
-                Socket socket = new Socket(address, 1567);
+                Socket socket = new Socket(address, Integer.valueOf(MessageBrokerConstants.CLIENT_PORT));
                 OutputStream outputStream = socket.getOutputStream();
                 PrintWriter printWriter = new PrintWriter(outputStream, true);
                 printWriter.println(message);

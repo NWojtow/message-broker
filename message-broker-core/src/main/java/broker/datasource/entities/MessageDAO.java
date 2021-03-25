@@ -1,11 +1,9 @@
 package broker.datasource.entities;
 
 import com.google.gson.annotations.Expose;
-import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Entity
 @Table(name="message")
