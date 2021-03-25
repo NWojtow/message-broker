@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static broker.configuration.jwt.util.Messages.*;
+import static constants.Messages.*;
 
 @Component
 public class JWTRequestFilters extends OncePerRequestFilter {

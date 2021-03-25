@@ -6,6 +6,8 @@ import broker.configuration.jwt.model.JwtRequest;
 import broker.configuration.jwt.model.JwtResponse;
 import broker.configuration.jwt.service.JWTUserService;
 import broker.datasource.entities.UserDAO;
+import constants.MessageBrokerConstants;
+import constants.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +34,7 @@ public class JWTAuthenticationControler {
     @Autowired
     private JWTUserService userDetailsService;
 
-    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+    @RequestMapping(value = MessageBrokerConstants.AUTHORIZE_PATH, method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
@@ -44,7 +46,7 @@ public class JWTAuthenticationControler {
         return ResponseEntity.ok(new JwtResponse(token, authenticationRequest.getUsername()));
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping(value = MessageBrokerConstants.REGISTER_PATH, method = RequestMethod.POST)
     public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
         Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
         validator.validate(user, UserDAO.class);
@@ -56,7 +58,7 @@ public class JWTAuthenticationControler {
         }
     }
 
-    @RequestMapping(value = "/register-admin", method = RequestMethod.POST)
+    @RequestMapping(value = MessageBrokerConstants.REGISTER_ADMIN_PATH, method = RequestMethod.POST)
     public ResponseEntity<?> saveAdminUser(@RequestBody UserDTO user) throws Exception {
         try {
             return ResponseEntity.ok(userDetailsService.saveAdmin(user));
@@ -69,9 +71,9 @@ public class JWTAuthenticationControler {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (DisabledException e) {
-            throw new Exception("USER_DISABLED", e);
+            throw new Exception(Messages.USER_DISABLED, e);
         } catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
+            throw new Exception(Messages.INVALID_CREDITENTIALS, e);
         }
     }
 }
