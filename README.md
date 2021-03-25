@@ -26,7 +26,7 @@ Based on JWTToken spring framework checks user priviliges to access some of Admi
 Broker is implemented to be high availability application, every message is sent by another thread so when multiple requests are recived, application still can respond to all of them at the same time.
 
 Messages have their expiration date and are deleted from database after expiring. 
-Application has it's hardcoded testmessage thread that creates new message on fixed time period.
-
+Application has it's hardcoded testmessage thread that creates new message on fixed time period. It should be deleted on production. 
+New messages are allowed to be sent to server by REST API endpoint. 
 
 SQL added to project is a database export that can be used to run application in local envinroment
