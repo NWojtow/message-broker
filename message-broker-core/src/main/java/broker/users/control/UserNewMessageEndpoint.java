@@ -31,7 +31,7 @@ public class UserNewMessageEndpoint implements Runnable {
                 outputStream.close();
                 socket.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("User: " + address + " is not listening");
             }
         }
 }

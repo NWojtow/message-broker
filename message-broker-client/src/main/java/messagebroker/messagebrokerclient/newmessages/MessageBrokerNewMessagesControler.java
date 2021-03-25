@@ -1,4 +1,4 @@
-package messagebrokerclient.control;
+package messagebroker.messagebrokerclient.newmessages;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

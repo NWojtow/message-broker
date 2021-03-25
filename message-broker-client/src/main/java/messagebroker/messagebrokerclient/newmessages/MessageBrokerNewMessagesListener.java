@@ -1,7 +1,6 @@
-package messagebrokerclient.boundry;
+package messagebroker.messagebrokerclient.newmessages;
 
 import constants.MessageBrokerConstants;
-import messagebrokerclient.control.MessageBrokerNewMessagesControler;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
