@@ -31,7 +31,7 @@ public class TestMessageScheduler implements Runnable {
             MessageDAO testMessage = new MessageDAO("test message: " + String.valueOf(Math.random()),
                     currentTime, subject);
             messageService.save(testMessage);
-            new MessageEndpoint("AUTOMOTIVE", testMessage.getMessage());
+            new MessageHandler("AUTOMOTIVE", testMessage.getMessage());
             new MessageDeleteScheduler(testMessage);
         }
     }

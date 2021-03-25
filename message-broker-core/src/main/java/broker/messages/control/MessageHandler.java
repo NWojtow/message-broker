@@ -3,16 +3,16 @@ package broker.messages.control;
 import broker.datasource.entities.SubjectDAO;
 import broker.datasource.entities.UserDAO;
 import broker.datasource.services.SubjectService;
-import broker.users.control.UserNewMessageEndpoint;
+import broker.users.control.UserNewMessageSocketEndpoint;
 
 import javax.persistence.EntityNotFoundException;
 
-public class MessageEndpoint implements Runnable{
+public class MessageHandler implements Runnable {
     private String subjectType;
     private String message;
     private Thread thread;
 
-    public MessageEndpoint(String subjectType, String message) {
+    public MessageHandler(String subjectType, String message) {
         this.subjectType = subjectType;
         this.message = message;
         this.thread = new Thread(this, "New message: "+ subjectType);
@@ -25,7 +25,7 @@ public class MessageEndpoint implements Runnable{
         SubjectDAO subject = subjectService.getSubjectBySubjectType(subjectType).orElseThrow(EntityNotFoundException::new);
 
         for(UserDAO user: subject.getUsers()) {
-            new UserNewMessageEndpoint(message, user.getAddress());
+            new UserNewMessageSocketEndpoint(message, user.getAddress());
         }
     }
 }

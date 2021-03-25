@@ -7,7 +7,7 @@ import javax.annotation.PostConstruct;
 import java.net.ServerSocket;
 
 @Component
-public class UserSocketEndpoint {
+public class UserOldMessagesSocketEndpoint {
     private ServerSocket serverSocket;
 
     @PostConstruct

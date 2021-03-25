@@ -7,12 +7,12 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class UserNewMessageEndpoint implements Runnable {
+public class UserNewMessageSocketEndpoint implements Runnable {
     private String message;
     private String address;
     private Thread thread;
 
-    public UserNewMessageEndpoint(String message, String address) {
+    public UserNewMessageSocketEndpoint(String message, String address) {
         this.message = message;
         this.address = address;
         thread = new Thread(this, message + address);

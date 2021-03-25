@@ -4,7 +4,7 @@ import broker.datasource.entities.MessageDAO;
 import broker.datasource.services.MessageService;
 import broker.entities.MessageDTO;
 import broker.messages.control.MessageDeleteScheduler;
-import broker.messages.control.MessageEndpoint;
+import broker.messages.control.MessageHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,13 +22,13 @@ public class MessagesController {
     @ResponseBody
     @RequestMapping(value = "/message", method = RequestMethod.PUT)
     public ResponseEntity<String> putNewMessage(@Valid @RequestBody MessageDTO message) {
-            Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
-            validator.validate(message);
+        Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+        validator.validate(message);
 
-            MessageDAO messageDAO = messageService.save(message);
-        new MessageEndpoint(message.getSubjectType(), message.getMessage());
-            new MessageDeleteScheduler(messageDAO);
-            return  new ResponseEntity<>(null, HttpStatus.CREATED);
+        MessageDAO messageDAO = messageService.save(message);
+        new MessageHandler(message.getSubjectType(), message.getMessage());
+        new MessageDeleteScheduler(messageDAO);
+        return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
 
     @ResponseBody
