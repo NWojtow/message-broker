@@ -17,7 +17,6 @@ public class UserDTO {
         return password;
     }
 
-
     public String getAddress() {
         return address;
     }

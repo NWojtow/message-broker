@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class MessageDTO {
     private String message;
     private Timestamp expirationDate;
-    private String subjectId;
+    private String subjectType;
 
 
     public String getMessage() {
@@ -24,11 +24,11 @@ public class MessageDTO {
         this.expirationDate = expirationDate;
     }
 
-    public String getSubjectId() {
-        return subjectId;
+    public String getSubjectType() {
+        return subjectType;
     }
 
-    public void setSubjectId(String subjectId) {
-        this.subjectId = subjectId;
+    public void setSubjectType(String subjectType) {
+        this.subjectType = subjectType;
     }
 }

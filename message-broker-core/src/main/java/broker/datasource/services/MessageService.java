@@ -1,7 +1,6 @@
 package broker.datasource.services;
 
 import broker.datasource.entities.MessageDAO;
-
 import broker.datasource.entities.SubjectDAO;
 import broker.datasource.resource.HibernateFactory;
 import broker.entities.MessageDTO;
@@ -20,7 +19,7 @@ public class MessageService implements CrudRepository<MessageDAO, Integer> {
 
     public MessageDAO save(MessageDTO message) {
         SubjectService subjectService = new SubjectService();
-        Optional<SubjectDAO> subject = subjectService.getSubjectBySubjectType(message.getSubjectId());
+        Optional<SubjectDAO> subject = subjectService.getSubjectBySubjectType(message.getSubjectType());
 
         if(subject.isPresent()) {
             return this.save(new MessageDAO(message.getMessage(), message.getExpirationDate(), subject.get()));

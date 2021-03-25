@@ -26,7 +26,7 @@ public class MessagesController {
             validator.validate(message);
 
             MessageDAO messageDAO = messageService.save(message);
-            new MessageEndpoint(message.getSubjectId(), message.getMessage());
+        new MessageEndpoint(message.getSubjectType(), message.getMessage());
             new MessageDeleteScheduler(messageDAO);
             return  new ResponseEntity<>(null, HttpStatus.CREATED);
     }
