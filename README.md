@@ -11,7 +11,7 @@ Stack:
 
 Modules:
 ### *message-broker-core
-Module containing REST Api, database connection and web socket logic
+Module containing REST Api, database connection and server side web socket logic (sendind new messages to all users with this subject and sending old messages to user that has connected to the client)
 
 ### *message-broker-client
 Module contains client that runs on Spring and when started it creates socket that listens for new messages and also socket to get all old messages from server
